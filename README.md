@@ -40,6 +40,6 @@ Installation:
 running:
 
 * For starting the server change directory to AlmaReminder-Server then type npm run devStart
-* For running tests type npm run test
+* For running tests type change directory to AlmaReminder-Server then npm run test
 
 
