@@ -45,5 +45,4 @@ running:
 * For starting the server locally change directory to AlmaReminder-Server then type npm run devStart
 * For running tests change directory to AlmaReminder-Server then npm run test
 * For flushing the cach you can open redis cli using redis-cli and typing FLUSHALL
-
-
+* If you want to disaple caching comment the lines(28 -33, 35 - 41, 58, 59, 61) in ./AlmaReminder-Server/src/common/Controller.js

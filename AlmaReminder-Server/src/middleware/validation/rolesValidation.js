@@ -1,7 +1,7 @@
 const admin = (req, res, next) => {
   try {
     if (!req.user.roles.includes("admin")) {
-      throw new ServiceError("Access denied.", 401);
+      throw new ServiceError("Access denied.", 403);
     }
   } catch (error) {
     next(error);
@@ -12,7 +12,7 @@ const admin = (req, res, next) => {
 const editor = (req, res, next) => {
   try {
     if (!req.user.roles.includes("editor")) {
-      throw new ServiceError("Access denied.", 401);
+      throw new ServiceError("Access denied.", 403);
     }
   } catch (error) {
     next(error);
@@ -23,7 +23,7 @@ const editor = (req, res, next) => {
 const viewer = (req, res, next) => {
   try {
     if (!req.user.roles.includes("viewer")) {
-      throw new ServiceError("Access denied.", 401);
+      throw new ServiceError("Access denied.", 403);
     }
   } catch (error) {
     next(error);

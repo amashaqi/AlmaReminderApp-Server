@@ -48,7 +48,7 @@ afterEach(() => {
 });
 describe("medicine", () => {
   describe("Edit medicines route", () => {
-    it("should return a 401", async () => {
+    it("should return a 400", async () => {
       const addUser = jest
         .spyOn(Controller, "editMedicine")
         .mockReturnValueOnce(editMedicineFlow);
@@ -60,7 +60,7 @@ describe("medicine", () => {
         .set("x-auth-token", JwtToken)
         .send(invalidInputType);
 
-      expect(statusCode).toBe(401);
+      expect(statusCode).toBe(400);
       expect(addUser).not.toHaveBeenCalled();
     });
   });

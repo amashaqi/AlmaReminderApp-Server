@@ -45,7 +45,7 @@ export const editMedicine = async (userMedicine, req) => {
     if (index < 0) {
       throw new ServiceError(
         "Invalid Request: medicine does not exist found",
-        401
+        400
       );
     }
 

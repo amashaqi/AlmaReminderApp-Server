@@ -12,21 +12,21 @@ export const vaildateRequestBody = (req, res, next) => {
       !req.body.initialDose ||
       !req.body.customReminders
     ) {
-      throw new ServiceError("Invalid Request", 401);
+      throw new ServiceError("Invalid Request", 400);
     } else if (isNaN(req.body.timesADay)) {
       throw new ServiceError(
         "Invalid Request: timesADay should be number",
-        401
+        400
       );
     } else if (isNaN(req.body.numberOfPills)) {
       throw new ServiceError(
         "Invalid Request: numberOfPills should be number",
-        401
+        400
       );
     } else if (req.body.initialDose.length > 5) {
       throw new ServiceError(
         "Invalid Request: initialDose time is not correct",
-        401
+        400
       );
     }
   } catch (error) {
@@ -38,9 +38,9 @@ export const vaildateRequestBody = (req, res, next) => {
 export const vaildateUserRequestBody = (req, res, next) => {
   try {
     if (!req.body.email || !req.body.userName || !req.body.password) {
-      throw new ServiceError("Invalid Request", 401);
+      throw new ServiceError("Invalid Request", 400);
     } else if (users.find((element) => element.email === req.body.email)) {
-      throw new ServiceError("Invalid Request: User Already Signed Up", 401);
+      throw new ServiceError("Invalid Request: User Already Signed Up", 400);
     }
   } catch (error) {
     next(error);
@@ -52,12 +52,12 @@ export const vaildateAuth = async (req, res, next) => {
   let user = await users.find((u) => u.email === req.body.email);
   try {
     if (!user) {
-      throw new ServiceError("Invalide email or password.", 401);
+      throw new ServiceError("Invalide email or password.", 403);
     } else {
       const valid = await bcrypt.compare(req.body.password, user.password);
 
       if (!valid) {
-        throw new ServiceError("Invalide email or password.", 401);
+        throw new ServiceError("Invalide email or password.", 403);
       }
     }
   } catch (error) {

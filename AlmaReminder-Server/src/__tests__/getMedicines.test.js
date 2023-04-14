@@ -10,7 +10,6 @@ describe("medicine", () => {
     it("should return a 200", async () => {
       const findUser = jest
         .spyOn(Controller, "finMedicines")
-        //@ts-ignore
         .mockReturnValueOnce(getUserAllMedicinesFlow);
 
       const { statusCode, body } = await supertest(app)
