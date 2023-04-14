@@ -36,7 +36,7 @@ https://drive.google.com/file/d/1ke-3IIpAD8226WGmMcjPD85WbNJ9umKr/view?usp=share
 Installation:
 
 * Change directory to AlmaReminder-Server then type npm install
-* As the services support caching redis need to be installed locally on
+* As the services support caching redis need to be installed locally
 * For Mac use: brew install redis, others you can find them on redis website
 https://redis.io/docs/getting-started/installation/install-redis-on-windows/https://redis.io/docs/getting-started/installation/install-redis-on-windows/
 
