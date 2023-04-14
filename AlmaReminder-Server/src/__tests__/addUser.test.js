@@ -1,6 +1,5 @@
 import supertest from "supertest";
 import { createServer } from "../common/utils/createServer.js";
-import { JwtToken } from "../common/JwtToken.js";
 import { addUserFlow } from "../mock/testing/addUserFlow.js";
 import * as Controller from "../common/Controller.js";
 const app = createServer();

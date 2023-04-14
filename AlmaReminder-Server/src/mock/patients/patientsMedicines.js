@@ -70,6 +70,7 @@ export const userMedicine = [
         description:
           "aracetamol is an analgesic and antipyretic drug that is used to temporarily relieve mild-to-moderate pain and fever. It is commonly included as an ingredient in cold and flu medications and is also used on its own.",
         initialDose: "10:12",
+        customReminders: [],
       },
       {
         id: 2,
@@ -79,6 +80,7 @@ export const userMedicine = [
         description:
           "Azithromycin is used to treat certain bacterial infections, such as bronchitis; pneumonia; sexually transmitted diseases (STD); and infections of the ears, lungs, sinuses, skin, throat, and reproductive organs.",
         initialDose: "10:12",
+        customReminders: [],
       },
 
       {
@@ -89,6 +91,7 @@ export const userMedicine = [
         description:
           "D3 strengthens bones and supports the absorption of calcium into the system.",
         initialDose: "10:12",
+        customReminders: [],
       },
     ],
   },

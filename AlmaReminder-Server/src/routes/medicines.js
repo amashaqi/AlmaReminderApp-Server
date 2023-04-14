@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.get("/v1/patient/medicines", [auth, viewer], async (req, res, next) => {
   try {
-    res.send(Controller.finMedicines(userMedicine, req));
+    res.send(await Controller.finMedicines(userMedicine, req));
   } catch (error) {
     next(error);
   }
@@ -21,7 +21,7 @@ router.post(
   async (req, res, next) => {
     try {
       res.status(201);
-      res.send(Controller.addMedicine(userMedicine, req));
+      res.send(await Controller.addMedicine(userMedicine, req));
     } catch (error) {
       next(error);
     }
@@ -33,7 +33,7 @@ router.put(
   [auth, viewer, vaildateRequestBody],
   async (req, res, next) => {
     try {
-      res.send(Controller.editMedicine(userMedicine, req));
+      res.send(await Controller.editMedicine(userMedicine, req));
     } catch (error) {
       next(error);
     }
@@ -45,7 +45,7 @@ router.delete(
   [auth, viewer],
   async (req, res, next) => {
     try {
-      res.send(Controller.deleteMedicine(userMedicine, req));
+      res.send(await Controller.deleteMedicine(userMedicine, req));
     } catch (error) {
       next(error);
     }

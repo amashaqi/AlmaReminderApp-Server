@@ -1,12 +1,13 @@
 import { ServiceError } from "../models/error/ServiceError.js";
 import { userMedicine } from "../mock/patients/patientsMedicines.js";
+import redis from "redis";
 
-export const finMedicines = (userMedicine, req) => {
-  return userMedicine.find((element) => element.id === req.user.id);
+export const finMedicines = async (userMedicine, req) => {
+  return await userMedicine.find((element) => element.id === req.user.id);
 };
 
-export const addMedicine = (userMedicine, req) => {
-  const oldMedicines = userMedicine.find(
+export const addMedicine = async (userMedicine, req) => {
+  const oldMedicines = await userMedicine.find(
     (element) => element.id === req.user.id
   ).medicines;
   const newMedicine = {
@@ -16,31 +17,52 @@ export const addMedicine = (userMedicine, req) => {
         : 1,
     ...req.body,
   };
-  userMedicine.find((element) => element.id === req.user.id).medicines = [
+  userMedicine.find((element) => element.id === req.user.id).medicines = await [
     ...oldMedicines,
     newMedicine,
   ];
   return userMedicine.find((element) => element.id === req.user.id);
 };
 
-export const editMedicine = (userMedicine, req) => {
+export const editMedicine = async (userMedicine, req) => {
+  let rediClient;
+  (async () => {
+    rediClient = redis.createClient();
+    rediClient.on("error", (error) => console.log("redis eror" + error));
+    await rediClient.connect();
+  })();
   const updatedMedicine = { id: parseInt(req.params.id), ...req.body };
-  let index = userMedicine
-    .find((element) => element.id === req.user.id)
-    .medicines.findIndex((med) => med.id === parseInt(req.params.id));
-  if (index < 0) {
-    throw new ServiceError(
-      "Invalid Request: medicine does not exist found",
-      401
+  const requestBody = await rediClient.get("requestBody");
+  if (JSON.stringify(updatedMedicine) === requestBody) {
+    const cachedData = await rediClient.get("medicines");
+    if (cachedData) {
+      return JSON.parse(cachedData);
+    }
+  } else {
+    let index = await userMedicine
+      .find((element) => element.id === req.user.id)
+      .medicines.findIndex((med) => med.id === parseInt(req.params.id));
+    if (index < 0) {
+      throw new ServiceError(
+        "Invalid Request: medicine does not exist found",
+        401
+      );
+    }
+
+    userMedicine.find((element) => element.id === req.user.id).medicines[
+      index
+    ] = await updatedMedicine;
+    const editMedRes = await userMedicine.find(
+      (element) => element.id === req.user.id
     );
+    await rediClient.set("medicines", JSON.stringify(editMedRes));
+    await rediClient.set("requestBody", JSON.stringify(updatedMedicine));
+    return await editMedRes;
   }
-  userMedicine.find((element) => element.id === req.user.id).medicines[index] =
-    updatedMedicine;
-  return userMedicine.find((element) => element.id === req.user.id);
 };
 
-export const deleteMedicine = (userMedicine, req) => {
-  let indexOfDeleteMed = userMedicine
+export const deleteMedicine = async (userMedicine, req) => {
+  let indexOfDeleteMed = await userMedicine
     .find((element) => element.id === req.user.id)
     .medicines.findIndex((med) => med.id === parseInt(req.params.id));
   if (indexOfDeleteMed < 0) {
@@ -49,7 +71,7 @@ export const deleteMedicine = (userMedicine, req) => {
       401
     );
   }
-  userMedicine
+  await userMedicine
     .find((element) => element.id === req.user.id)
     .medicines.splice(indexOfDeleteMed, 1);
   return userMedicine.find((element) => element.id === req.user.id).medicines;

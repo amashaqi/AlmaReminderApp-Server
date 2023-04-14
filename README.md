@@ -1,4 +1,4 @@
-# Alma Reminder App Back end services
+# Alma Reminder App BackEnd Services
 
 
 ## Back-end services built using NodeJs and Express with In-memory data
@@ -36,10 +36,14 @@ https://drive.google.com/file/d/1ke-3IIpAD8226WGmMcjPD85WbNJ9umKr/view?usp=share
 Installation:
 
 * change directory to AlmaReminder-Server then type npm install
+* as the services support caching redis need to be installed locally on
+* For Mac use: brew install redis, others you can find them on redis website
+https://redis.io/docs/getting-started/installation/install-redis-on-windows/https://redis.io/docs/getting-started/installation/install-redis-on-windows/
 
 running:
-
+* First of all you need to run redis localy, for Mac you can use redis-server command
 * For starting the server locally change directory to AlmaReminder-Server then type npm run devStart
 * For running tests type change directory to AlmaReminder-Server then npm run test
+* For flushing the cach you can open redis cli using redis-cli and typing FLUSHALL
 
 
