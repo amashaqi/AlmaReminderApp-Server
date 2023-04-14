@@ -43,7 +43,7 @@ https://redis.io/docs/getting-started/installation/install-redis-on-windows/http
 running:
 * First of all you need to run redis localy, for Mac you can use redis-server command
 * For starting the server locally change directory to AlmaReminder-Server then type npm run devStart
-* For running tests type change directory to AlmaReminder-Server then npm run test
+* For running tests change directory to AlmaReminder-Server then npm run test
 * For flushing the cach you can open redis cli using redis-cli and typing FLUSHALL
 
 
