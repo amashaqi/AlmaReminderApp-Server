@@ -2,10 +2,10 @@ export const userMedicine = [
   {
     email: "sara@gmail.com",
     userName: "Sara",
-    id: 1,
+    id: "1",
     medicines: [
       {
-        id: 1,
+        id: "1",
         medicineName: "Acamol",
         timesADay: 4,
         numberOfPills: 7,
@@ -15,7 +15,7 @@ export const userMedicine = [
         customReminders: [],
       },
       {
-        id: 2,
+        id: "2",
         medicineName: "Azero",
         timesADay: 1,
         numberOfPills: 12,
@@ -26,7 +26,7 @@ export const userMedicine = [
       },
 
       {
-        id: 3,
+        id: "3",
         medicineName: "D3Vitamin",
         timesADay: 3,
         numberOfPills: 12,
@@ -36,7 +36,7 @@ export const userMedicine = [
         customReminders: ["07:00", "14:00", "20:30"],
       },
       {
-        id: 4,
+        id: "4",
         medicineName: "C3Vitamin",
         timesADay: 4,
         numberOfPills: 50,
@@ -46,7 +46,7 @@ export const userMedicine = [
         customReminders: [],
       },
       {
-        id: 5,
+        id: "5",
         medicineName: "Zitrocin",
         timesADay: 1,
         numberOfPills: 4,
@@ -60,10 +60,10 @@ export const userMedicine = [
   {
     email: "ali@gmail.com",
     userName: "Ali",
-    id: 2,
+    id: "2",
     medicines: [
       {
-        id: 1,
+        id: "1",
         medicineName: "Acamol",
         timesADay: 3,
         numberOfPills: 7,
@@ -73,7 +73,7 @@ export const userMedicine = [
         customReminders: [],
       },
       {
-        id: 2,
+        id: "2",
         medicineName: "Azero",
         timesADay: 1,
         numberOfPills: 12,
@@ -84,7 +84,7 @@ export const userMedicine = [
       },
 
       {
-        id: 3,
+        id: "3",
         medicineName: "D3Vitamin",
         timesADay: 2,
         numberOfPills: 12,

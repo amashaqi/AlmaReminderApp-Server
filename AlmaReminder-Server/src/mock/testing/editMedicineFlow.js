@@ -1,10 +1,10 @@
 export const editMedicineFlow = {
   email: "sara@gmail.com",
   userName: "Sara",
-  id: 1,
+  id: "1",
   medicines: [
     {
-      id: 1,
+      id: "1",
       medicineName: "Acamol",
       timesADay: 3,
       numberOfPills: 7,
@@ -14,7 +14,7 @@ export const editMedicineFlow = {
       customReminders: [],
     },
     {
-      id: 2,
+      id: "2",
       medicineName: "sssssssss",
       timesADay: 2,
       numberOfPills: 9,
@@ -23,7 +23,7 @@ export const editMedicineFlow = {
       customReminders: [],
     },
     {
-      id: 3,
+      id: "3",
       medicineName: "D3Vitamin",
       timesADay: 2,
       numberOfPills: 12,
@@ -33,7 +33,7 @@ export const editMedicineFlow = {
       customReminders: [],
     },
     {
-      id: 4,
+      id: "4",
       medicineName: "C3Vitamin",
       timesADay: 1,
       numberOfPills: 50,
@@ -43,7 +43,7 @@ export const editMedicineFlow = {
       customReminders: [],
     },
     {
-      id: 5,
+      id: "5",
       medicineName: "Zitrocin",
       timesADay: 1,
       numberOfPills: 4,

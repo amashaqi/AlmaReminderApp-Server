@@ -1,6 +1,6 @@
 export const deleteMedicineFlow = [
   {
-    id: 1,
+    id: "1",
     medicineName: "Acamol",
     timesADay: 3,
     numberOfPills: 7,
@@ -10,7 +10,7 @@ export const deleteMedicineFlow = [
     customReminders: [],
   },
   {
-    id: 3,
+    id: "3",
     medicineName: "D3Vitamin",
     timesADay: 2,
     numberOfPills: 12,
@@ -20,7 +20,7 @@ export const deleteMedicineFlow = [
     customReminders: [],
   },
   {
-    id: 4,
+    id: "4",
     medicineName: "C3Vitamin",
     timesADay: 1,
     numberOfPills: 50,
@@ -30,7 +30,7 @@ export const deleteMedicineFlow = [
     customReminders: [],
   },
   {
-    id: 5,
+    id: "5",
     medicineName: "Zitrocin",
     timesADay: 1,
     numberOfPills: 4,

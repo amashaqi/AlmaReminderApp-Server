@@ -5,12 +5,6 @@ import { addMedicineFlow } from "../mock/testing/addMedicineFlow.js";
 import * as Controller from "../common/Controller.js";
 const app = createServer();
 
-const mockFn = jest.fn();
-
-function fnUnderTest(args1) {
-  mockFn(args1);
-}
-
 const newMedicineInput = {
   medicineName: "New Med",
   timesADay: 2,

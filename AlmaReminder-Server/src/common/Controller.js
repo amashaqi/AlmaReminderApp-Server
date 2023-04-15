@@ -1,5 +1,6 @@
 import { ServiceError } from "../models/error/ServiceError.js";
 import { userMedicine } from "../mock/patients/patientsMedicines.js";
+import { v4 as uuid_v4 } from "uuid";
 import redis from "redis";
 
 export const finMedicines = async (userMedicine, req) => {
@@ -11,10 +12,7 @@ export const addMedicine = async (userMedicine, req) => {
     (element) => element.id === req.user.id
   ).medicines;
   const newMedicine = {
-    id:
-      oldMedicines.length > 0
-        ? oldMedicines[oldMedicines.length - 1].id + 1
-        : 1,
+    id: uuid_v4(),
     ...req.body,
   };
   userMedicine.find((element) => element.id === req.user.id).medicines = await [
@@ -31,7 +29,7 @@ export const editMedicine = async (userMedicine, req) => {
     rediClient.on("error", (error) => console.log("redis eror" + error));
     await rediClient.connect();
   })();
-  const updatedMedicine = { id: parseInt(req.params.id), ...req.body };
+  const updatedMedicine = { id: req.params.id, ...req.body };
   const requestBody = await rediClient.get("requestBody");
   if (JSON.stringify(updatedMedicine) === requestBody) {
     const cachedData = await rediClient.get("medicines");
@@ -41,7 +39,7 @@ export const editMedicine = async (userMedicine, req) => {
   } else {
     let index = await userMedicine
       .find((element) => element.id === req.user.id)
-      .medicines.findIndex((med) => med.id === parseInt(req.params.id));
+      .medicines.findIndex((med) => med.id === req.params.id);
     if (index < 0) {
       throw new ServiceError(
         "Invalid Request: medicine does not exist found",
@@ -64,7 +62,7 @@ export const editMedicine = async (userMedicine, req) => {
 export const deleteMedicine = async (userMedicine, req) => {
   let indexOfDeleteMed = await userMedicine
     .find((element) => element.id === req.user.id)
-    .medicines.findIndex((med) => med.id === parseInt(req.params.id));
+    .medicines.findIndex((med) => med.id === req.params.id);
   if (indexOfDeleteMed < 0) {
     throw new ServiceError(
       "Invalid Request: medicine does not exist found",
@@ -78,7 +76,7 @@ export const deleteMedicine = async (userMedicine, req) => {
 };
 
 export const addUser = (users, req) => {
-  const id = users.length > 0 ? users[users.length - 1]._id + 1 : 1;
+  const id = uuid_v4();
   const newUser = {
     _id: id,
     ...req.body,
